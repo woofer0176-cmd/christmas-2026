@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="2026 성탄 칸타타 · 청주 명암교회">
+<meta property="og:description" content="청주 명암교회 연합찬양대 2026 성탄 칸타타 엎드려 경배하세">
+<title>2026 성탄 칸타타 · 청주 명암교회 연합찬양대</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans KR',sans-serif;background:#08111e;color:#f0e8d0;line-height:1.7;overflow-x:hidden;}
+
+/* 눈송이 */
+.snowflake{position:fixed;top:-30px;color:rgba(255,255,255,0.7);font-size:14px;pointer-events:none;z-index:999;animation:fall linear infinite;}
+@keyframes fall{0%{transform:translateY(0) rotate(0deg);opacity:0.8;}100%{transform:translateY(110vh) rotate(360deg);opacity:0;}}
+
+/* 헤더 */
+.site-header{position:relative;padding:52px 24px 44px;text-align:center;background:linear-gradient(160deg,#061a0e 0%,#0e0820 45%,#1a060a 100%);overflow:hidden;}
+.stars-bg{position:absolute;inset:0;overflow:hidden;}
+.star-dot{position:absolute;background:#fff;border-radius:50%;animation:twinkle ease-in-out infinite alternate;}
+@keyframes twinkle{0%{opacity:0.15;}100%{opacity:0.9;}}
+.header-content{position:relative;z-index:2;}
+.christmas-year{font-size:11px;letter-spacing:5px;color:#c9a84c;font-weight:500;margin-bottom:8px;}
+.christmas-star{font-size:32px;margin-bottom:10px;display:block;animation:starGlow 2s ease-in-out infinite alternate;}
+@keyframes starGlow{0%{text-shadow:0 0 10px #f0d98a,0 0 20px #c9a84c;transform:scale(1);}100%{text-shadow:0 0 20px #f0d98a,0 0 40px #c9a84c,0 0 60px #ffaa00;transform:scale(1.08);}}
+.cantata-name{font-family:'Noto Serif KR',serif;font-size:30px;font-weight:700;color:#f0d98a;margin-bottom:6px;text-shadow:0 0 30px rgba(201,168,76,0.4);}
+.publisher-name{font-size:12px;color:rgba(201,168,76,0.55);letter-spacing:2px;margin-bottom:12px;}
+.church-name{font-size:14px;color:#c9a84c;font-weight:500;letter-spacing:1px;}
+.christmas-date{font-size:12px;color:rgba(201,168,76,0.45);margin-top:10px;letter-spacing:2px;}
+.holly-divider{margin:14px auto 0;color:#4aad5e;font-size:18px;letter-spacing:4px;}
+
+/* 이번주 자동 표시 배너 */
+.this-week-banner{background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:12px;margin:16px;padding:14px 16px;text-align:center;}
+.this-week-label{font-size:11px;color:rgba(201,168,76,0.6);letter-spacing:2px;margin-bottom:4px;}
+.this-week-title{font-family:'Noto Serif KR',serif;font-size:17px;color:#f0d98a;font-weight:600;}
+
+/* 탭 */
+.nav-tabs{display:flex;background:#050e06;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(201,168,76,0.15);}
+.nav-tab{flex:1;padding:13px 2px;text-align:center;font-size:12px;font-weight:700;color:rgba(201,168,76,0.5);cursor:pointer;border-bottom:3px solid transparent;transition:all 0.2s;line-height:1.4;}
+.nav-tab.active{color:#f0d98a;border-bottom-color:#f0d98a;}
+
+/* 탭 콘텐츠 */
+.content{display:none !important;}
+.content.active{display:block !important;}
+
+/* 섹션 헤더 */
+.sec-header{padding:22px 20px 14px;background:linear-gradient(135deg,#061a0e,#050a12);border-bottom:1px solid rgba(201,168,76,0.15);}
+.sec-header h2{font-family:'Noto Serif KR',serif;font-size:17px;color:#f0d98a;font-weight:600;}
+.sec-header p{font-size:12px;color:rgba(201,168,76,0.45);margin-top:3px;}
+
+/* 곡 카드 */
+.song-card{background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.2);border-radius:16px;overflow:hidden;margin:14px 16px 0;}
+.song-top{display:flex;align-items:center;gap:14px;padding:16px 18px;background:rgba(201,168,76,0.06);}
+.song-num{background:linear-gradient(135deg,#c9a84c,#f0d98a);color:#0a1205;font-size:13px;font-weight:700;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.song-title-text{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700;color:#f0e8d0;}
+.song-subtitle{font-size:11px;color:rgba(201,168,76,0.5);margin-top:2px;}
+.song-watch-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 16px 14px;background:linear-gradient(135deg,#c9a84c,#e8c85a);color:#0a1205;text-align:center;padding:12px;border-radius:10px;font-weight:700;font-size:13px;text-decoration:none;transition:opacity 0.2s;}
+.song-watch-btn:hover{opacity:0.85;}
+
+/* 집중 연습 박스 */
+.practice-placeholder{background:rgba(201,168,76,0.05);border:1px dashed rgba(201,168,76,0.2);border-radius:10px;padding:12px 14px;margin:0 16px 14px;font-size:12px;color:rgba(201,168,76,0.35);font-style:italic;}
+
+/* 집중 연습 탭 - 곡별 섹션 */
+.pc-song-section{margin:14px 16px 0;background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.2);border-radius:14px;overflow:hidden;}
+.pc-song-header{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(201,168,76,0.07);}
+.pc-num{background:linear-gradient(135deg,#c9a84c,#f0d98a);color:#0a1205;font-size:12px;font-weight:700;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pc-title{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:600;color:#f0d98a;}
+.pc-parts{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px;}
+.pc-part-box{border-radius:8px;padding:10px 12px;}
+.pc-part-label{font-size:11px;font-weight:700;margin-bottom:5px;}
+.pc-part-content{font-size:11px;line-height:1.8;color:rgba(240,232,208,0.7);}
+.pc-part-empty{font-size:11px;color:rgba(201,168,76,0.3);font-style:italic;}
+.pc-s{background:rgba(180,120,220,0.12);border:1px solid rgba(180,120,220,0.2);}
+.pc-s .pc-part-label{color:#c090e0;}
+.pc-a{background:rgba(80,140,220,0.12);border:1px solid rgba(80,140,220,0.2);}
+.pc-a .pc-part-label{color:#80b0f0;}
+.pc-t{background:rgba(220,150,60,0.12);border:1px solid rgba(220,150,60,0.2);}
+.pc-t .pc-part-label{color:#e8a040;}
+.pc-b{background:rgba(220,70,70,0.12);border:1px solid rgba(220,70,70,0.2);}
+.pc-b .pc-part-label{color:#e08080;}
+
+/* 연습 일정표 */
+.schedule-intro{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:14px 16px;margin:14px 16px 0;font-size:13px;color:rgba(201,168,76,0.7);}
+.schedule-table{margin:14px 16px 20px;background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.2);border-radius:14px;overflow:hidden;}
+.sch-row{display:flex;align-items:flex-start;padding:14px 16px;border-bottom:1px solid rgba(201,168,76,0.1);gap:14px;}
+.sch-row:last-child{border-bottom:none;}
+.sch-date-box{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:6px 12px;text-align:center;flex-shrink:0;min-width:60px;}
+.sch-month{font-size:10px;color:#c9a84c;}
+.sch-day{font-size:18px;font-weight:700;color:#f0d98a;line-height:1.2;}
+.sch-weekday{font-size:10px;color:rgba(201,168,76,0.6);}
+.sch-info{flex:1;}
+.sch-title{font-size:14px;font-weight:700;color:#f0e8d0;}
+.sch-detail{font-size:12px;color:rgba(201,168,76,0.6);margin-top:3px;}
+.sch-empty{text-align:center;padding:30px 16px;font-size:13px;color:rgba(201,168,76,0.3);}
+
+/* 푸터 */
+.site-footer{background:#030708;color:rgba(201,168,76,0.3);text-align:center;padding:24px 16px;font-size:12px;line-height:2.2;margin-top:20px;}
+.site-footer span{color:#c9a84c;}
+
+/* 플레이어 모달 */
+#player-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+#player-title{color:#f0d98a;font-size:16px;font-weight:700;margin-bottom:14px;font-family:'Noto Serif KR',serif;}
+#player-iframe{width:100%;max-width:700px;height:72vh;border:none;border-radius:12px;background:#000;}
+#player-close{margin-top:16px;background:#c9a84c;color:#0a1205;border:none;padding:10px 28px;border-radius:20px;font-size:14px;font-weight:700;cursor:pointer;}
+
+@media(min-width:600px){.cantata-name{font-size:38px;}.pc-parts{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<!-- 눈송이 컨테이너 -->
+<div id="snowflakes-container"></div>
+
+<!-- 헤더 -->
+<header class="site-header">
+  <div class="stars-bg" id="stars-bg"></div>
+  <div class="header-content">
+    <div class="christmas-year">✦ 2026 CHRISTMAS CANTATA ✦</div>
+    <span class="christmas-star">★</span>
+    <div class="cantata-name">엎드려 경배하세</div>
+    <div class="publisher-name">빛나라 출판사</div>
+    <div class="church-name">청주 명암교회 연합찬양대</div>
+    <div class="christmas-date">2026 · 12 · 25</div>
+    <div class="holly-divider">🎄 ✦ 🎄</div>
+  </div>
+</header>
+
+<!-- 탭 -->
+<nav class="nav-tabs">
+  <div class="nav-tab active" onclick="showTab('songs',this)">🎵 칸타타 곡목</div>
+  <div class="nav-tab" onclick="showTab('practice',this)">🎯 집중 연습</div>
+  <div class="nav-tab" onclick="showTab('schedule',this)">📅 연습 일정</div>
+</nav>
+
+<!-- ═══════════════ 곡목 탭 ═══════════════ -->
+<div class="content active" id="songs">
+  <div class="sec-header">
+    <h2>🎄 칸타타 곡목</h2>
+    <p>빛나라 출판사 · 총 6곡 구성</p>
+  </div>
+
+  <!-- 1번 -->
+  <div class="song-card">
+    <div class="song-top">
+      <div class="song-num">1</div>
+      <div><div class="song-title-text">거룩한 아기 나셨다</div></div>
+    </div>
+    <a class="song-watch-btn" href="https://www.vitnara.co.kr/part/luah/luah/01.html" target="_blank">🎼 악보 / 연습 영상 보기</a>
+    <div class="practice-placeholder">🎯 집중 연습 포인트 — 준비 중입니다.</div>
+  </div>
+
+  <!-- 2번 -->
+  <div class="song-card">
+    <div class="song-top">
+      <div class="song-num">2</div>
+      <div><div class="song-title-text">동방박사 캐럴</div></div>
+    </div>
+    <a class="song-watch-btn" href="https://www.vitnara.co.kr/part/luah/luah/02.html" target="_blank">🎼 악보 / 연습 영상 보기</a>
+    <div class="practice-placeholder">🎯 집중 연습 포인트 — 준비 중입니다.</div>
+  </div>
+
+  <!-- 3번 -->
+  <div class="song-card">
+    <div class="song-top">
+      <div class="song-num">3</div>
+      <div><div class="song-title-text">사랑의 왕 아기 예수</div></div>
+    </div>
+    <a class="song-watch-btn" href="https://www.vitnara.co.kr/part/luah/luah/03.html" target="_blank">🎼 악보 / 연습 영상 보기</a>
+    <div class="practice-placeholder">🎯 집중 연습 포인트 — 준비 중입니다.</div>
+  </div>
+
+  <!-- 4번 -->
+  <div class="song-card">
+    <div class="song-top">
+      <div class="song-num">4</div>
+      <div><div class="song-title-text">높은 곳에 영광</div></div>
+    </div>
+    <a class="song-watch-btn" href="https://www.vitnara.co.kr/part/luah/luah/04.html" target="_blank">🎼 악보 / 연습 영상 보기</a>
+    <div class="practice-placeholder">🎯 집중 연습 포인트 — 준비 중입니다.</div>
+  </div>
+
+  <!-- 5번 -->
+  <div class="song-card">
+    <div class="song-top">
+      <div class="song-num">5</div>
+      <div><div class="song-title-text">Happy Birthday, Jesus</div></div>
+    </div>
+    <a class="song-watch-btn" href="https://www.vitnara.co.kr/part/luah/luah/05.html" target="_blank">🎼 악보 / 연습 영상 보기</a>
+    <div class="practice-placeholder">🎯 집중 연습 포인트 — 준비 중입니다.</div>
+  </div>
+
+  <!-- 6번 (유리라테) -->
+  <div class="song-card">
+    <div class="song-top">
+      <div class="song-num">6</div>
+      <div>
+        <div class="song-title-text">평화의 왕 오셨다</div>
+        <div class="song-subtitle">유리라테</div>
+      </div>
+    </div>
+    <a class="song-watch-btn" href="https://jubil2018.cafe24.com/can/path/online_pt/7/c.htm" target="_blank">🎼 악보 / 연습 영상 보기</a>
+    <div class="practice-placeholder">🎯 집중 연습 포인트 — 준비 중입니다.</div>
+  </div>
+
+  <div style="height:24px;"></div>
+</div>
+
+<!-- ═══════════════ 집중 연습 탭 ═══════════════ -->
+<div class="content" id="practice">
+  <div class="sec-header">
+    <h2>🎯 집중 연습 포인트</h2>
+    <p>파트별 핵심 연습 포인트 · 순차 업데이트</p>
+  </div>
+
+  <!-- 1번 -->
+  <div class="pc-song-section">
+    <div class="pc-song-header"><div class="pc-num">1</div><div class="pc-title">거룩한 아기 나셨다</div></div>
+    <div class="pc-parts">
+      <div class="pc-part-box pc-s"><div class="pc-part-label">🎵 소프라노</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-a"><div class="pc-part-label">🎵 알토</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-t"><div class="pc-part-label">🎵 테너</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-b"><div class="pc-part-label">🎵 베이스</div><div class="pc-part-empty">준비 중</div></div>
+    </div>
+  </div>
+
+  <!-- 2번 -->
+  <div class="pc-song-section">
+    <div class="pc-song-header"><div class="pc-num">2</div><div class="pc-title">동방박사 캐럴</div></div>
+    <div class="pc-parts">
+      <div class="pc-part-box pc-s"><div class="pc-part-label">🎵 소프라노</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-a"><div class="pc-part-label">🎵 알토</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-t"><div class="pc-part-label">🎵 테너</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-b"><div class="pc-part-label">🎵 베이스</div><div class="pc-part-empty">준비 중</div></div>
+    </div>
+  </div>
+
+  <!-- 3번 -->
+  <div class="pc-song-section">
+    <div class="pc-song-header"><div class="pc-num">3</div><div class="pc-title">사랑의 왕 아기 예수</div></div>
+    <div class="pc-parts">
+      <div class="pc-part-box pc-s"><div class="pc-part-label">🎵 소프라노</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-a"><div class="pc-part-label">🎵 알토</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-t"><div class="pc-part-label">🎵 테너</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-b"><div class="pc-part-label">🎵 베이스</div><div class="pc-part-empty">준비 중</div></div>
+    </div>
+  </div>
+
+  <!-- 4번 -->
+  <div class="pc-song-section">
+    <div class="pc-song-header"><div class="pc-num">4</div><div class="pc-title">높은 곳에 영광</div></div>
+    <div class="pc-parts">
+      <div class="pc-part-box pc-s"><div class="pc-part-label">🎵 소프라노</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-a"><div class="pc-part-label">🎵 알토</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-t"><div class="pc-part-label">🎵 테너</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-b"><div class="pc-part-label">🎵 베이스</div><div class="pc-part-empty">준비 중</div></div>
+    </div>
+  </div>
+
+  <!-- 5번 -->
+  <div class="pc-song-section">
+    <div class="pc-song-header"><div class="pc-num">5</div><div class="pc-title">Happy Birthday, Jesus</div></div>
+    <div class="pc-parts">
+      <div class="pc-part-box pc-s"><div class="pc-part-label">🎵 소프라노</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-a"><div class="pc-part-label">🎵 알토</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-t"><div class="pc-part-label">🎵 테너</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-b"><div class="pc-part-label">🎵 베이스</div><div class="pc-part-empty">준비 중</div></div>
+    </div>
+  </div>
+
+  <!-- 6번 -->
+  <div class="pc-song-section">
+    <div class="pc-song-header"><div class="pc-num">6</div><div class="pc-title">평화의 왕 오셨다</div></div>
+    <div class="pc-parts">
+      <div class="pc-part-box pc-s"><div class="pc-part-label">🎵 소프라노</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-a"><div class="pc-part-label">🎵 알토</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-t"><div class="pc-part-label">🎵 테너</div><div class="pc-part-empty">준비 중</div></div>
+      <div class="pc-part-box pc-b"><div class="pc-part-label">🎵 베이스</div><div class="pc-part-empty">준비 중</div></div>
+    </div>
+  </div>
+
+  <div style="height:24px;"></div>
+</div>
+
+<!-- ═══════════════ 연습 일정 탭 ═══════════════ -->
+<div class="content" id="schedule">
+  <div class="sec-header">
+    <h2>📅 연습 일정표</h2>
+    <p>2026 성탄 칸타타 연습 일정</p>
+  </div>
+
+  <div class="schedule-intro">
+    ✦ 연습 일정을 입력해 주시면 추가해 드립니다.
+  </div>
+
+  <div class="schedule-table">
+    <div class="sch-empty">📅 일정을 준비 중입니다.</div>
+  </div>
+</div>
+
+<!-- 푸터 -->
+<footer class="site-footer">
+  <span>청주 명암교회 연합찬양대</span><br>
+  2026 성탄 칸타타 · 엎드려 경배하세<br>
+  빛나라 출판사
+</footer>
+
+<script>
+// 탭 전환
+function showTab(id, el) {
+  document.querySelectorAll('.content').forEach(c => { c.classList.remove('active'); c.style.removeProperty('display'); });
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  var target = document.getElementById(id);
+  if (target) target.classList.add('active');
+  if (el && el.classList) el.classList.add('active');
+}
+window.onload = function() {
+  document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+  var s = document.getElementById('songs');
+  if (s) s.classList.add('active');
+};
+
+// 별 생성
+(function() {
+  var bg = document.getElementById('stars-bg');
+  for (var i = 0; i < 50; i++) {
+    var star = document.createElement('div');
+    star.className = 'star-dot';
+    var size = Math.random() * 2.5 + 0.8;
+    star.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + Math.random() * 100 + '%;top:' + Math.random() * 100 + '%;animation-delay:' + Math.random() * 3 + 's;animation-duration:' + (Math.random() * 2 + 2) + 's;';
+    bg.appendChild(star);
+  }
+})();
+
+// 눈송이 생성
+(function() {
+  var container = document.getElementById('snowflakes-container');
+  var symbols = ['❄', '❅', '❆', '·', '✦'];
+  for (var i = 0; i < 18; i++) {
+    var flake = document.createElement('div');
+    flake.className = 'snowflake';
+    flake.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    var duration = Math.random() * 6 + 6;
+    var delay = Math.random() * 8;
+    flake.style.cssText = 'left:' + Math.random() * 100 + 'vw;animation-duration:' + duration + 's;animation-delay:' + delay + 's;font-size:' + (Math.random() * 10 + 8) + 'px;opacity:' + (Math.random() * 0.4 + 0.2) + ';';
+    container.appendChild(flake);
+  }
+})();
+</script>
+</body>
+</html>
