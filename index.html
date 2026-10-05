@@ -694,7 +694,7 @@ body.dock-full-open{overflow:hidden;}
 </div>
 
 <script>
-var YT_IDS={"1": {"c": "rTEHDm9pLCw", "s": "GJR-jp_wxl8", "a": "62Vb_Cffnjc", "t": "rbt6kKdjuls", "b": "R025CEkJL9Q"}, "2": {"c": "FiWrMcmTipw", "s": "aG69slHAnR0", "a": "rgvnC_v9Wk8", "t": "1lb7ZzPLFY4", "b": "yEptHJb57Lw"}, "3": {"c": "KpMw-keZehg", "s": "qHxPBRaC3Pk", "a": "XeKqmakHHm4", "t": "l0RxbtTCTqY", "b": "-ZZauzujDeM"}, "4": {"c": "-MhQ1RCu-oU", "s": "joAZwvzobZc", "a": "IYgEJSJbvfE", "t": "XmYJ0wPMKuU", "b": "4I-QUmHQpLY"}, "5": {"c": "kL1TJCZENfE", "s": "93UGLANHbb0", "a": "xVGEcL-Oe9c", "t": "Wx43CQOHW1E", "b": "okL7B1QIx_Y"}};
+var YT_IDS={"1": {"c": "rTEHDm9pLCw", "s": "GJR-jp_wxl8", "a": "62Vb_Cffnjc", "t": "rbt6kKdjuls", "b": "R025CEkJL9Q"}, "2": {"c": "FiWrMcmTipw", "s": "aG69slHAnR0", "a": "rgvnC_v9Wk8", "t": "1lb7ZzPLFY4", "b": "yEptHJb57Lw"}, "3": {"c": "KpMw-keZehg", "s": "qHxPBRaC3Pk", "a": "XeKqmakHHm4", "t": "l0RxbtTCTqY", "b": "-ZZauzujDeM"}, "4": {"c": "-MhQ1RCu-oU", "s": "joAZwvzobZc", "a": "IYgEJSJbvfE", "t": "XmYJ0wPMKuU", "b": "4I-QUmHQpLY"}, "5": {"c": "kL1TJCZENfE", "s": "93UGLANHbb0", "a": "xVGEcL-Oe9c", "t": "Wx43CQOHW1E", "b": "okL7B1QIx_Y"}, "6": {"c": "wtlRwhyFlgI"}};
 var SONG_TITLES={1:"거룩한 아기 나셨다",2:"동방박사 캐럴",3:"사랑의 왕 아기 예수",4:"높은 곳에 영광",5:"Happy Birthday, Jesus",6:"평화의 왕 오셨다"};
 var PART_NAMES={c:"합창",s:"소프라노",a:"알토",t:"테너",b:"베이스"};
 var JUBIL={c:"c",s:"s",a:"a",t:"t",b:"b"};
@@ -702,7 +702,7 @@ function playPart(n,k,btn){
   try{
     var src;
     var yt=document.getElementById("dock-yt");
-    if(YT_IDS[n]){
+    if(YT_IDS[n]&&YT_IDS[n][k]){
       var id=YT_IDS[n][k];
       var org=(location.protocol.indexOf("http")===0)?"&origin="+encodeURIComponent(location.origin):"";
       src="https://www.youtube.com/embed/"+id+"?autoplay=1&playsinline=1&rel=0&loop=1&playlist="+id+org;
@@ -713,9 +713,9 @@ function playPart(n,k,btn){
     }
     var f=document.getElementById("dock-frame");
     f.src=src;
-    document.getElementById("dock-title").textContent=(YT_IDS[n]?"🔁 ":"▶ ")+n+". "+SONG_TITLES[n]+" · "+PART_NAMES[k];
+    document.getElementById("dock-title").textContent=((YT_IDS[n]&&YT_IDS[n][k])?"🔁 ":"▶ ")+n+". "+SONG_TITLES[n]+" · "+PART_NAMES[k];
     var d=document.getElementById("dock"); d.style.display="block"; d.classList.remove("mini"); d.classList.remove("full");
-    var isJ=!YT_IDS[n];
+    var isJ=!(YT_IDS[n]&&YT_IDS[n][k]);
     d.classList.toggle("jubil",isJ);
     document.getElementById("dock-full").style.display=isJ?"":"none";
     document.getElementById("dock-full").textContent="⤢ 크게";
