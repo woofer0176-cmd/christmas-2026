@@ -318,7 +318,7 @@ body.has-dock .site-footer{margin-bottom:0;}
 <div class="content active" id="songs">
   <div class="sec-header">
     <h2>🎄 칸타타 곡목 · 집중 연습</h2>
-    <p>▶ 버튼을 누르면 화면 아래 플레이어에서 재생됩니다 · 다른 탭을 봐도 계속 들려요</p>
+    <p>▶ 버튼을 누르면 화면 아래 플레이어에서 반복 재생됩니다 · 다른 탭을 봐도 계속 들려요</p>
   </div>
 
   <div class="song-card" id="song1">
@@ -696,7 +696,7 @@ function playPart(n,k,btn){
     if(YT_IDS[n]){
       var id=YT_IDS[n][k];
       var org=(location.protocol.indexOf("http")===0)?"&origin="+encodeURIComponent(location.origin):"";
-      src="https://www.youtube.com/embed/"+id+"?autoplay=1&playsinline=1&rel=0&enablejsapi=0"+org;
+      src="https://www.youtube.com/embed/"+id+"?autoplay=1&playsinline=1&rel=0&loop=1&playlist="+id+org;
       yt.href="https://www.youtube.com/watch?v="+id; yt.textContent="↗ 유튜브"; yt.style.display="";
     } else {
       src="https://jubil2018.cafe24.com/can/path/online_pt/7/"+JUBIL[k]+".htm";
@@ -704,7 +704,7 @@ function playPart(n,k,btn){
     }
     var f=document.getElementById("dock-frame");
     f.src=src;
-    document.getElementById("dock-title").textContent="▶ "+n+". "+SONG_TITLES[n]+" · "+PART_NAMES[k];
+    document.getElementById("dock-title").textContent="🔁 "+n+". "+SONG_TITLES[n]+" · "+PART_NAMES[k];
     var d=document.getElementById("dock"); d.style.display="block"; d.classList.remove("mini");
     document.getElementById("dock-min").textContent="▾ 작게";
     document.body.classList.add("has-dock");
