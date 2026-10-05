@@ -287,6 +287,14 @@ body.has-dock .site-footer{margin-bottom:0;}
 
 .play-btn{white-space:nowrap;letter-spacing:-0.3px;padding:9px 2px;}
 @media(max-width:400px){.play-btn{font-size:11.5px;}.play-row{gap:5px;}}
+
+/* 6번 곡(유빌라테 페이지) 전용 */
+.dock.jubil .dock-video{height:58vh;overflow:hidden;background:#fff;position:relative;}
+.dock.jubil .dock-video iframe{position:absolute;left:0;top:0;}
+.dock.jubil.full{top:0;bottom:0;max-width:none;border-radius:0;}
+.dock.jubil.full .dock-video{height:calc(100vh - 46px);height:calc(100dvh - 46px);}
+body.has-dock:has(.dock.jubil){padding-bottom:62vh;}
+body.dock-full-open{overflow:hidden;}
 </style>
 </head>
 <body>
@@ -676,6 +684,7 @@ body.has-dock .site-footer{margin-bottom:0;}
   <div class="dock-bar">
     <div class="dock-title" id="dock-title">재생 중</div>
     <a class="dock-btn" id="dock-yt" href="#" target="_blank" rel="noopener">↗ 유튜브</a>
+    <button class="dock-btn" id="dock-full" onclick="toggleFull()" style="display:none;">⤢ 크게</button>
     <button class="dock-btn" id="dock-min" onclick="toggleDock()">▾ 작게</button>
     <button class="dock-btn" onclick="closeDock()">✕</button>
   </div>
@@ -704,13 +713,39 @@ function playPart(n,k,btn){
     }
     var f=document.getElementById("dock-frame");
     f.src=src;
-    document.getElementById("dock-title").textContent="🔁 "+n+". "+SONG_TITLES[n]+" · "+PART_NAMES[k];
-    var d=document.getElementById("dock"); d.style.display="block"; d.classList.remove("mini");
+    document.getElementById("dock-title").textContent=(YT_IDS[n]?"🔁 ":"▶ ")+n+". "+SONG_TITLES[n]+" · "+PART_NAMES[k];
+    var d=document.getElementById("dock"); d.style.display="block"; d.classList.remove("mini"); d.classList.remove("full");
+    var isJ=!YT_IDS[n];
+    d.classList.toggle("jubil",isJ);
+    document.getElementById("dock-full").style.display=isJ?"":"none";
+    document.getElementById("dock-full").textContent="⤢ 크게";
+    document.getElementById("dock-min").style.display=isJ?"none":"";
+    setTimeout(fitFrame,30);
     document.getElementById("dock-min").textContent="▾ 작게";
     document.body.classList.add("has-dock");
     document.querySelectorAll(".play-btn.playing").forEach(function(b){b.classList.remove("playing");});
     var b=document.querySelector("#song"+n+" .pb-"+k); if(b) b.classList.add("playing");
   }catch(e){}
+}
+function fitFrame(){
+  try{
+    var d=document.getElementById("dock"), v=document.getElementById("dock-video"), f=document.getElementById("dock-frame");
+    if(d.classList.contains("jubil")){
+      var W=1000, s=v.clientWidth/W;
+      if(s>1) s=1;
+      f.style.width=W+"px"; f.style.height=(v.clientHeight/s)+"px";
+      f.style.transform="scale("+s+")"; f.style.transformOrigin="top left";
+    } else {
+      f.style.width=""; f.style.height=""; f.style.transform="";
+    }
+  }catch(e){}
+}
+window.addEventListener("resize",fitFrame);
+function toggleFull(){
+  var d=document.getElementById("dock"); d.classList.toggle("full");
+  document.getElementById("dock-full").textContent=d.classList.contains("full")?"↙ 줄이기":"⤢ 크게";
+  document.body.classList.toggle("dock-full-open",d.classList.contains("full"));
+  setTimeout(fitFrame,30);
 }
 function toggleDock(){
   var d=document.getElementById("dock"); d.classList.toggle("mini");
@@ -718,6 +753,8 @@ function toggleDock(){
 }
 function closeDock(){
   document.getElementById("dock-frame").src="about:blank";
+  document.getElementById("dock").classList.remove("full","jubil");
+  document.body.classList.remove("dock-full-open");
   document.getElementById("dock").style.display="none";
   document.body.classList.remove("has-dock");
   document.querySelectorAll(".play-btn.playing").forEach(function(b){b.classList.remove("playing");});
